@@ -16,11 +16,11 @@ jobs:
         uses: docker/setup-qemu-action@v2
       -
         run: |
-          docker run -t -i arm32v6/alpine uname -a
+          docker run -i arm32v6/alpine uname -a
 
       -
         run: |
-          docker run -t -i arm32v7/ubuntu uname -a
+          docker run -i arm32v7/ubuntu uname -a
 
 
       
