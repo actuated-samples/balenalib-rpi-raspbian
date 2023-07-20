@@ -1,4 +1,4 @@
-name: connect
+name: job
 
 on:
   push:
@@ -6,12 +6,9 @@ on:
       - master
   workflow_dispatch:
 
-permissions:
-  id-token: write
-
 jobs:
-  connect:
-    name: connect
+  job:
+    name: job
     runs-on: actuated-arm64-2cpu-8gb
     steps:
       -
@@ -21,4 +18,11 @@ jobs:
         run: |
           docker run -t -i arm32v6/alpine uname -a
 
+      -
+        run: |
+          docker run -t -i arm32v7/ubuntu uname -a
+
+
       
+
+
