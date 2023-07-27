@@ -25,7 +25,7 @@ jobs:
       - 
         name: Build the Dockerfile
         run: |
-          docker buildx build --push --load -t ttl.sh/wget:${{ github.sha }}-armv7 . -f ./Dockerfile --platform linux/arm/v7
+          docker buildx build --push -t ttl.sh/wget:${{ github.sha }}-armv7 . -f ./Dockerfile --platform linux/arm/v7
 
 
 
