@@ -9,7 +9,7 @@ on:
 jobs:
   job:
     name: job
-    runs-on: actuated-arm64-2cpu-8gb
+    runs-on: actuated-arm64-2cpu-4gb
     steps:
       - uses: actions/checkout@v3
         with:
@@ -18,9 +18,14 @@ jobs:
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       -
+        name: Setup buildx
         run: |
           docker buildx install
           docker buildx create --platform linux/arm64,linux/arm/v8,linux/arm/v7,linux/amd64
-          docker buildx build --load -t ttl.sh/wget:${{ github.sha }}-armv7 . -f ./Dockerfile --platform linux/arm/v7
+      - 
+        name: Build the Dockerfile
+        run: |
+          docker buildx build --push --load -t ttl.sh/wget:${{ github.sha }}-armv7 . -f ./Dockerfile --platform linux/arm/v7
+
 
 
